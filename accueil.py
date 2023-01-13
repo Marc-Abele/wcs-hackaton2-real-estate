@@ -40,7 +40,7 @@ st.title('')
 st.subheader('Entrez les caractéristiques de votre bien')
 
 
-arrond = st.selectbox('Localisation :', options = arrond)
+arrondissement = st.selectbox('Localisation :', options = arrond)
 st.write('')
 surface = st.slider('Surface du bien (m²) :', min_value = int(X['surface_reelle_bati'].min()), max_value = 500)
 st.write('')
@@ -71,11 +71,19 @@ estimation = int(lr.predict([[surface, pieces]]))
 def formate(nb):
     return str("{:,}".format(nb))
 
+cher = ['Paris 8e Arrondissement','Paris 7e Arrondissement','Paris 16e Arrondissement','Paris 6e Arrondissement','Paris 1er Arrondissement','Paris 4e Arrondissement']
+moyen = ['Paris 3e Arrondissement','Paris 2e Arrondissement','Paris 9e Arrondissement','Paris 17e Arrondissement','Paris 5e Arrondissement','Paris 15e Arrondissement']
+
+
 
 st.title('')
 if st.button('Estimez mon bien'):
-    st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(round((estimation - mae/2)))) + '€  et ' + str(formate(round((estimation + mae/2)))) + '€.'))
-
+    if arrondissement in cher :
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.2*math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(1.2*math.trunc((estimation + mae/2)))) + '€.'))
+    elif arrondissement in moyen :
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.1*math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(1.1*math.trunc((estimation + mae/2)))) + '€.'))
+    else :
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(math.trunc((estimation + mae/2)))) + '€.'))
 
 
 
