@@ -79,11 +79,11 @@ moyen = ['Paris 3e Arrondissement','Paris 2e Arrondissement','Paris 9e Arrondiss
 st.title('')
 if st.button('Estimez mon bien'):
     if arrondissement in cher :
-        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.2*math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(1.2*math.trunc((estimation + mae/2)))) + '€.'))
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.2*math.trunc((estimation - 50000)))) + '€  et ' + str(formate(1.2*math.trunc((estimation + 50000)))) + '€.'))
     elif arrondissement in moyen :
-        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.1*math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(1.1*math.trunc((estimation + mae/2)))) + '€.'))
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(1.1*math.trunc((estimation - 50000)))) + '€  et ' + str(formate(1.1*math.trunc((estimation + 50000)))) + '€.'))
     else :
-        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(math.trunc((estimation - mae/2)))) + '€  et ' + str(formate(math.trunc((estimation + mae/2)))) + '€.'))
+        st.subheader(('Votre bien immobilier est estimé entre ' + str(formate(math.trunc((estimation - 50000)))) + '€  et ' + str(formate(math.trunc((estimation + 50000)))) + '€.'))
 
 
 
